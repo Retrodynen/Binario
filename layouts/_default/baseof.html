@@ -45,24 +45,30 @@
 	{{- end }}
 </head>
 <body class="body kind-{{ .Kind }}">
-	{{ partial "header" . }}
-	<div class="primary">
-	{{ block "main" . }}
-		{{- if or .Title .Content }}
-		<div class="page block">
-			{{ with .Title }}<h1 class="page__title">{{ . }}</h1>{{ end }}
-			{{ with .Content }}<div class="page__content{{ if not $.Title }} page__content--notitle{{ end }}">{{ . }}</div>{{ end }}
-		</div>
-		{{ end }}
-	{{ end }}
-	</div>
-	{{ partial "footer" . }}
-{{- with .Site.Menus.main }}
-<script src="{{ "js/menu.js" | relURL }}"></script>
-{{- end }}
-{{- partial "mathjax.html" . -}}
-{{- range .Site.Params.customJS }}
-<script src="{{ . | relURL }}"></script>
-{{- end }}
+    <div class="container">
+    {{ partial "header" . }}
+        <div class="content">
+            <div class="primary">
+
+                {{ block "main" . }}
+                {{- if or .Title .Content }}
+                <div class="page block">
+                    {{ with .Title }}<h1 class="page__title">{{ . }}</h1>{{ end }}
+                    {{ with .Content }}<div class="page__content{{ if not $.Title }} page__content--notitle{{ end }}">{{ . }}</div>{{ end }}
+                </div>
+                {{ end }}
+                {{ end }}
+            </div>
+        </div>
+        {{ partial "footer" . }}
+        {{- with .Site.Menus.main }}
+        <script src="{{ "js/menu.js" | relURL }}"></script>
+        {{- end }}
+        {{- partial "mathjax.html" . -}}
+        {{- range .Site.Params.customJS }}
+        <script src="{{ . | relURL }}"></script>
+        {{- end }}
+    </div>
+            {{- partial "entry/toc.html" . }}
 </body>
 </html>
