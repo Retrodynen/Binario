@@ -1,0 +1,5 @@
+{{ if .Params.canonicalUrl }}
+<a style="display:hidden;" class="u-url" href="{{ .Params.canonicalUrl }}"></a>
+{{ else }}
+	<a style="display:hidden;" class="u-url" href="{{ .Permalink }}"></a>
+{{ end }}

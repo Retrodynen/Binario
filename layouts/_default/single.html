@@ -2,11 +2,11 @@
 	<main class="main">
 		{{ partial "breadcrumb.html" . }}
 		<div class="single block">
-			<article class="entry">
+			<article class="h-entry entry">
 				{{- partial "entry/featured.html" (dict "page" . "IsSingle" true) }}
 				{{- partial "entry/meta.html" (dict "page" . "class" "mb") }}
-				<h1 class="entry__title">{{ .Title }}</h1>
-				<div class="entry__content">{{ .Content }}</div>
+				<h1 class="entry__title p-name">{{ .Title }}</h1>
+				<div class="entry__content e-content">{{ .Content }}</div>
 				{{ if or (.Param "share") (isset $.Params "tags") }}
 				<footer class="entry__footer">
 					{{ partial "entry/tags.html" . }}
